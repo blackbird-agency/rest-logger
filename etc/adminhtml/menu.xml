@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Blackbird_RestLogger::restlogger" title="API" translate="title" module="Magento_Backend" sortOrder="100" parent="Magento_Backend::system" resource="Blackbird_RestLogger::restlogger"/>
+        <add id="Blackbird_RestLogger::restlogger_log"
+             title="REST Api Logs"
+             module="Blackbird_RestLogger"
+             parent="Blackbird_RestLogger::restlogger"
+             sortOrder="10"
+             resource="Blackbird_RestLogger::restlogger_log"
+             action="restlogger/log/index"
+        />
+    </menu>
+</config>

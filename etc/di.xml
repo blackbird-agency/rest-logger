@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Blackbird\RestLogger\Api\Data\LogInterface" type="Blackbird\RestLogger\Model\Log"/>
+    <preference for="Blackbird\RestLogger\Api\ConfigInterface" type="Blackbird\RestLogger\Model\Config"/>
+    <preference for="Blackbird\RestLogger\Api\ResolverInterface" type="Blackbird\RestLogger\Model\Service\Resolver"/>
+    <preference for="Blackbird\RestLogger\Api\Data\LogSearchResultsInterface" type="Blackbird\RestLogger\Model\LogSearchResults"/>
+    <preference for="Blackbird\RestLogger\Api\GetLogsListInterface" type="Blackbird\RestLogger\Model\GetLogList"/>
+    <preference for="Blackbird\RestLogger\Api\SaveLogsInterface" type="Blackbird\RestLogger\Model\ResourceModel\SaveLogs"/>
+</config>

@@ -1,0 +1,14 @@
+{
+    "blackbird_restlogger_log": {
+        "column": {
+            "log_id": true,
+            "http_method": true,
+            "endpoint": true,
+            "payload": true,
+            "response_code": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

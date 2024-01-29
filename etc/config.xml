@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <restlogger>
+            <general>
+                <enabled>0</enabled>
+                <include_authorization>0</include_authorization>
+                <excluded_services>V1/carts/:cartId,V1/carts/search,V1/carts,V1/carts/mine,V1/carts/mine/order,V1/carts/:cartId/shipping-methods,V1/carts/:cartId/estimate-shipping-methods,V1/carts/:cartId/estimate-shipping-methods-by-address-id,V1/carts/mine/shipping-methods,V1/carts/mine/estimate-shipping-methods,V1/carts/mine/estimate-shipping-methods-by-address-id,V1/carts/:cartId/items,V1/carts/:quoteId/items,V1/carts/:cartId/items/:itemId,V1/carts/mine/items,V1/carts/mine/items/:itemId,V1/carts/:cartId/selected-payment-method,V1/carts/:cartId/payment-methods,V1/carts/mine/selected-payment-method,V1/carts/mine/payment-methods,V1/carts/:cartId/billing-address,V1/carts/mine/billing-address,V1/carts/:cartId/coupons,V1/carts/:cartId/coupons/:couponCode,V1/carts/mine/coupons,V1/carts/mine/coupons/:couponCode,V1/carts/:cartId/order,V1/carts/:cartId/totals,V1/carts/mine/totals,V1/carts/mine/collect-totals,V1/carts/mine/shipping-information,V1/carts/:cartId/shipping-information,V1/carts/:cartId/totals-information,V1/carts/mine/totals-information,V1/carts/mine/payment-information,V1/carts/mine/set-payment-information,V1/carts/:cartId/gift-message,V1/carts/:cartId/gift-message/:itemId,V1/carts/mine/gift-message,V1/carts/mine/gift-message/:itemId,V1/carts/licence,V1/carts/licence/list,V1/guest-carts/:cartId,V1/guest-carts,V1/guest-carts/:cartId/order,V1/guest-carts/:cartId/shipping-methods,V1/guest-carts/:cartId/estimate-shipping-methods,V1/guest-carts/:cartId/items,V1/guest-carts/:cartId/items/:itemId,V1/guest-carts/:cartId/selected-payment-method,V1/guest-carts/:cartId/payment-methods,V1/guest-carts/:cartId/billing-address,V1/guest-carts/:cartId/coupons,V1/guest-carts/:cartId/coupons/:couponCode,V1/guest-carts/:cartId/collect-totals,V1/guest-carts/:cartId/totals,V1/guest-carts/:cartId/shipping-information,V1/guest-carts/:cartId/totals-information,V1/guest-carts/:cartId/payment-information,V1/guest-carts/:cartId/set-payment-information,V1/guest-carts/:cartId/gift-message,V1/guest-carts/:cartId/gift-message/:itemId</excluded_services>
+            </general>
+            <!-- TODO implement cleanup -->
+            <!--<cleanup>
+                <enabled>0</enabled>
+                <threshold>30</threshold>
+            </cleanup>-->
+        </restlogger>
+    </default>
+</config>
