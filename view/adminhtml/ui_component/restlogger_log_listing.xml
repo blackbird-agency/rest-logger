@@ -71,6 +71,12 @@
                 <filter>text</filter>
                 <label translate="true">Payload</label>
             </settings>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="resizeEnabled" xsi:type="boolean">false</item><!-- "true" allows admin user to change column width (default value); "false" - disallows admin user to change column width -->
+                    <item name="resizeDefaultWidth" xsi:type="number">100</item><!-- needed column width in pixels -->
+                </item>
+            </argument>
         </column>
         <column name="response_code" sortOrder="50">
             <settings>

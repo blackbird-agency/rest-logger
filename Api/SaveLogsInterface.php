@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace Blackbird\RestLogger\Api;
 
+use Blackbird\RestLogger\Api\Data\LogInterface;
+
 interface SaveLogsInterface
 {
     /**
      * Save logs.
      *
-     * @param \Blackbird\RestLogger\Api\Data\LogInterface[] $logs
+     * @param LogInterface[] $logs
      * @return void
      * @since 100.4.0
      */

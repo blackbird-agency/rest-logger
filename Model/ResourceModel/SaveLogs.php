@@ -8,29 +8,16 @@ use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\Stdlib\DateTime\DateTime;
 use Blackbird\RestLogger\Api\SaveLogsInterface;
 
-/**
- * @inheritDoc
- */
 class SaveLogs implements SaveLogsInterface
 {
-    /**
-     * @var ResourceConnection
-     */
-    private $resourceConnection;
-
-    /**
-     * @var DateTime
-     */
-    private $dateTime;
-
     /**
      * @param ResourceConnection $resourceConnection
      * @param DateTime $dateTime
      */
-    public function __construct(ResourceConnection $resourceConnection, DateTime $dateTime)
-    {
-        $this->resourceConnection = $resourceConnection;
-        $this->dateTime = $dateTime;
+    public function __construct(
+        protected ResourceConnection $resourceConnection,
+        protected DateTime $dateTime
+    ) {
     }
 
     /**

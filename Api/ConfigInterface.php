@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Blackbird\RestLogger\Api;
 
 interface ConfigInterface
