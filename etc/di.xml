@@ -7,4 +7,18 @@
     <preference for="Blackbird\RestLogger\Api\Data\LogSearchResultsInterface" type="Blackbird\RestLogger\Model\LogSearchResults"/>
     <preference for="Blackbird\RestLogger\Api\GetLogsListInterface" type="Blackbird\RestLogger\Model\GetLogList"/>
     <preference for="Blackbird\RestLogger\Api\SaveLogsInterface" type="Blackbird\RestLogger\Model\ResourceModel\SaveLogs"/>
+    <preference for="Blackbird\RestLogger\Api\CleanLogsInterface" type="Blackbird\RestLogger\Model\ResourceModel\CleanLogs"/>
+    <!-- Cli Command -->
+    <type name="Blackbird\RestLogger\Console\Command\CleanupLogs">
+        <arguments>
+            <argument name="name" xsi:type="string">blackbird:restloggert:cleanup</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="blackbird_restlogger_cleanup" xsi:type="object">Blackbird\RestLogger\Console\Command\CleanupLogs</item>
+            </argument>
+        </arguments>
+    </type>
 </config>
