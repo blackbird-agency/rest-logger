@@ -13,8 +13,10 @@ namespace Blackbird\RestLogger\Console\Command;
 
 use Blackbird\RestLogger\Api\CleanLogsInterface;
 use Blackbird\RestLogger\Api\ConfigInterface;
+use Composer\Console\Input\InputOption;
 use Magento\Framework\App\Area;
 use Magento\Framework\App\State;
+use Magento\Framework\Exception\LocalizedException;
 use Safe\DateTime;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -42,6 +44,7 @@ class CleanupLogs extends Command
         $this->setDescription('Blackbird Rest Logger Cleanup');
         $this->addArgument(self::THRESHOLD_ARG, InputArgument::OPTIONAL, 'Cleanup before N days');
         $this->addOption(self::ALL_ARG, null,null,"Remove all of logs", null);
+        $this->addOption(self::THRESHOLD_ARG, null, InputOption::VALUE_REQUIRED,"How many days have you been wanting to delete the logs ?",null);
         parent::configure();
     }
 
@@ -53,25 +56,44 @@ class CleanupLogs extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         try {
+            $threshold = $this->getThreshold($input, $output);
+            //$value = $input->getOption(self::THRESHOLD_ARG);
+            //$output->writeln("<info>type: $value</info>");
             $timeStart = (new \DateTime())->format('Y-m-d H:i:s');
             $output->writeln("<info>[$timeStart] Starting cleanup job.</info>");
             $this->state->setAreaCode(Area::AREA_CRONTAB);
-            $threshold = $input->getArgument(self::THRESHOLD_ARG) ?: $this->config->getCleanupThreshold();
+
             $this->cleaner->execute((int)$threshold);
 
             $timeEnd = (new \DateTime())->format('Y-m-d H:i:s');
             $output->writeln("<info>[$timeEnd] Ending cleanup job with success.</info>");
-
-            // Remove all of logs if --all is active
-            if ($input->getOption(self::ALL_ARG) == 1) {
-                // How to remove all of logs ?
-                $this->cleaner->execute(0);
-                $output->writeln("<info>All of logs are removed.</info>");
-            }
             return self::SUCCESS_CODE;
         } catch (\Exception $e) {
             $output->writeln($e->getMessage());
             return self::ERROR_CODE;
         }
+    }
+
+    /**
+     * @throws LocalizedException
+     */
+    protected function getThreshold(InputInterface $input, OutputInterface $output): ?int
+    {
+        $threshold = null;
+
+        if ($input->getOption(self::THRESHOLD_ARG) && !is_numeric($input->getOption(self::THRESHOLD_ARG))) {
+            $output->writeln("<error>Must be a numeric value.</error>");
+            throw new LocalizedException(__('Threshold must be a number of days'));
+        }
+
+        if (!isset ($threshold)) {
+            $threshold = (int)$input->getOption(self::THRESHOLD_ARG) ?: $this->config->getCleanupThreshold();
+        }
+
+        if ($input->getOption(self::ALL_ARG)) {
+            $threshold = 0;
+        }
+
+        return $threshold;
     }
 }
