@@ -15,7 +15,6 @@ use Blackbird\RestLogger\Api\CleanLogsInterface;
 use DateInterval;
 use DateTimeImmutable;
 use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\Stdlib\DateTime\DateTime;
 
 class CleanLogs implements CleanLogsInterface
 {
@@ -29,11 +28,25 @@ class CleanLogs implements CleanLogsInterface
 
     public function execute(int $dayThreshold): void
     {
+        if ($dayThreshold === 0) {
+            $this->cleanAllLogs();
+            return;
+        }
+
         $threshold = $this->getDateFromThreshold($dayThreshold);
 
         $logTable = $this->resourceConnection->getTableName(Log::TABLE_NAME_LOG);
         $connection = $this->resourceConnection->getConnection();
         $connection->delete($logTable, ['created_at < ?' => $threshold]);
+    }
+
+    protected function cleanAllLogs(): void
+    {
+        $logTable = $this->resourceConnection->getTableName(Log::TABLE_NAME_LOG);
+        $connection = $this->resourceConnection->getConnection();
+        // Implémenter une methode delete.
+        $now = new \DateTime();
+        $connection->delete($logTable, 'created_at <= \'' . $now->format('Y-m-d H:i:s') . '\'');
     }
 
     protected function getDateFromThreshold(int $dayThreshold): string

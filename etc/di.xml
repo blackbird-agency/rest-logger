@@ -11,7 +11,7 @@
     <!-- Cli Command -->
     <type name="Blackbird\RestLogger\Console\Command\CleanupLogs">
         <arguments>
-            <argument name="name" xsi:type="string">blackbird:restloggert:cleanup</argument>
+            <argument name="name" xsi:type="string">blackbird:restlogger:cleanup</argument>
         </arguments>
     </type>
     <type name="Magento\Framework\Console\CommandListInterface">
