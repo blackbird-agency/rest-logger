@@ -1,0 +1,12 @@
+.data-row .payload-action {
+    cursor: pointer;
+}
+
+.modal-inner-wrap .modal-content dt {
+    font-weight: bold;
+}
+.modal-inner-wrap .modal-content .payload-body .json-body {
+    background-color: #f5f5f5;
+    padding: 10px;
+    margin-right: 60px;
+}

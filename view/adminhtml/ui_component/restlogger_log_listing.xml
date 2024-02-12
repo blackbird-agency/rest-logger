@@ -48,6 +48,13 @@
         <paging name="listing_paging"/>
     </listingToolbar>
     <columns name="restlogger_listing_columns">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="resizeConfig" xsi:type="array">
+                    <item name="enabled" xsi:type="boolean">true</item>
+                </item>
+            </item>
+        </argument>
         <column name="log_id" sortOrder="10">
             <settings>
                 <filter>text</filter>
@@ -66,7 +73,17 @@
                 <label translate="true">Endpoint</label>
             </settings>
         </column>
-        <column name="payload" sortOrder="40">
+        <column name="payload" class="Blackbird\RestLogger\Ui\Component\Listing\Column\Payload">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="resizeEnabled" xsi:type="boolean">false</item>
+                    <item name="resizeDefaultWidth" xsi:type="number">560</item>
+                    <item name="component" xsi:type="string">Blackbird_RestLogger/js/grid/columns/payload</item>
+                    <item name="indexField" xsi:type="string">payload</item>
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                </item>
+            </argument>
             <settings>
                 <filter>text</filter>
                 <label translate="true">Payload</label>
