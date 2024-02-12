@@ -7,7 +7,7 @@
                 comment="Log ID"/>
         <column xsi:type="varchar" name="http_method" nullable="true" length="255" comment="Type"/>
         <column xsi:type="varchar" name="endpoint" nullable="true" length="255" comment="Sender"/>
-        <column xsi:type="text" name="payload" nullable="false" comment="Template Content"/>
+        <column xsi:type="longtext" name="payload" nullable="false" comment="Template Content"/>
         <column xsi:type="int" name="response_code" unsigned="false" nullable="false" comment="Response code"/>
         <column xsi:type="timestamp" name="created_at" on_update="false" nullable="true" comment="Created at"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">
