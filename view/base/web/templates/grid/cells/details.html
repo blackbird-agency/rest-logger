@@ -1,0 +1,31 @@
+<div class="endpoint-label">
+    <dt>Endpoint</dt>
+    <dd><span><%- endpoint %></span></dd>
+</div>
+<div class="http-response">
+    <dt>Response</dt>
+    <dd><span><%- response %></span></dd>
+</div>
+<div class="payload-body" data-mage-init='{
+    "collapsible":{
+        "collapsible": true,
+        "active": <%- payload_active %>,
+        "openedState": "opened"
+    }}'>
+    <div data-role="title"><span>Payload</span></div>
+    <div data-role="content">
+        <pre class="json-body"><%- payload %></pre>
+    </div>
+</div>
+<div class="response-body" data-mage-init='{
+    "collapsible":{
+        "collapsible": true,
+        "active": <%- response_active %>,
+        "openedState": "opened"
+    }}'>
+    <div data-role="title"><span>Response body</span></div>
+    <div data-role="content">
+        <pre class="json-body"><%- response_body %></pre>
+    </div>
+</div>
+

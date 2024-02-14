@@ -76,4 +76,14 @@ class Log extends AbstractExtensibleModel implements LogInterface
     {
         $this->setData(self::RESPONSE_CODE, $responseCode);
     }
+
+    public function getResponseBody(): ?string
+    {
+        return $this->getData(self::RESPONSE_BODY);
+    }
+
+    public function setResponseBody(string $responseBody): void
+    {
+        $this->setData(self::RESPONSE_BODY, $responseBody);
+    }
 }

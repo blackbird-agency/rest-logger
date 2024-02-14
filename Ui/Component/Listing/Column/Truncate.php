@@ -13,7 +13,7 @@ namespace Blackbird\RestLogger\Ui\Component\Listing\Column;
 
 use Magento\Ui\Component\Listing\Columns\Column;
 
-class Payload extends Column
+class Truncate extends Column
 {
     const MAX_LENGHT = 150;
 
@@ -23,7 +23,7 @@ class Payload extends Column
             foreach ($dataSource['data']['items'] as &$item) {
                 $fieldName = $this->getData('name');
                 if (isset($item[$fieldName])) {
-                    $item['full_payload'] = $item[$fieldName];
+                    $item[$fieldName . '_full'] = $item[$fieldName];
                     $item[$fieldName] = $this->truncate($item[$fieldName]);
                 }
             }
@@ -33,8 +33,8 @@ class Payload extends Column
 
     protected function truncate(string $payload): string
     {
-        return strlen($payload) > self::MAX_LENGHT ?
-            substr($payload, 0, self::MAX_LENGHT) . ' ...' :
+        return \strlen($payload) > self::MAX_LENGHT ?
+            \substr($payload, 0, self::MAX_LENGHT) . ' ...' :
             $payload;
     }
 }

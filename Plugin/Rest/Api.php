@@ -16,6 +16,7 @@ use Blackbird\RestLogger\Api\Data\LogInterface;
 use Blackbird\RestLogger\Api\Data\LogInterfaceFactory;
 use Blackbird\RestLogger\Api\ResolverInterface;
 use Blackbird\RestLogger\Api\SaveLogsInterface;
+use Magento\Framework\Serialize\SerializerInterface;
 use Psr\Log\LoggerInterface;
 
 class Api
@@ -27,7 +28,8 @@ class Api
         protected LogInterfaceFactory $logFactory,
         protected SaveLogsInterface $saveLogs,
         protected ResolverInterface $resolver,
-        protected LoggerInterface $logger
+        protected LoggerInterface $logger,
+        protected SerializerInterface $serializer
     ) {
     }
 
@@ -66,6 +68,7 @@ class Api
         }
         try {
             $this->currentRequest->setResponseCode((int)$subject->getStatusCode());
+            $this->currentRequest->setResponseBody($subject->getContent() ?? '{}');
             $this->saveLogs->execute([$this->currentRequest]);
         } catch (\Exception $e) {
             $this->logger->warning(\sprintf("Error while logging REST request: %s", $e->getMessage()));

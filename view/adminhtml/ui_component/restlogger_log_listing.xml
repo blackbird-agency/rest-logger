@@ -55,7 +55,7 @@
                 </item>
             </item>
         </argument>
-        <column name="log_id" sortOrder="10">
+        <column name="log_id" sortOrder="10" component="Blackbird_RestLogger/js/grid/columns/details">
             <settings>
                 <filter>text</filter>
                 <label translate="true">ID</label>
@@ -73,12 +73,11 @@
                 <label translate="true">Endpoint</label>
             </settings>
         </column>
-        <column name="payload" class="Blackbird\RestLogger\Ui\Component\Listing\Column\Payload">
+        <column name="payload" class="Blackbird\RestLogger\Ui\Component\Listing\Column\Truncate" sortOrder="40">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="resizeEnabled" xsi:type="boolean">false</item>
-                    <item name="resizeDefaultWidth" xsi:type="number">560</item>
-                    <item name="component" xsi:type="string">Blackbird_RestLogger/js/grid/columns/payload</item>
+                    <item name="resizeDefaultWidth" xsi:type="number">300</item>
                     <item name="indexField" xsi:type="string">payload</item>
                     <item name="sortable" xsi:type="boolean">false</item>
                     <item name="sortOrder" xsi:type="number">40</item>
@@ -93,6 +92,21 @@
             <settings>
                 <filter>text</filter>
                 <label translate="true">Response</label>
+            </settings>
+        </column>
+        <column name="response_body" class="Blackbird\RestLogger\Ui\Component\Listing\Column\Truncate" sortOrder="50">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="resizeEnabled" xsi:type="boolean">false</item>
+                    <item name="resizeDefaultWidth" xsi:type="number">300</item>
+                    <item name="indexField" xsi:type="string">response_body</item>
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">50</item>
+                </item>
+            </argument>
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Response body</label>
             </settings>
         </column>
         <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date" sortOrder="60">

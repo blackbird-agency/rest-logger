@@ -11,6 +11,7 @@ interface LogInterface
     public const PAYLOAD = 'payload';
     public const CREATED_AT = 'created_at';
     public const RESPONSE_CODE = 'response_code';
+    public const RESPONSE_BODY = 'response_body';
 
     /**
      * @return int|null
@@ -77,4 +78,16 @@ interface LogInterface
      * @return void
      */
     public function setCreatedAt(string $createdAt): void;
+
+    /**
+     * @return string|null
+     */
+    public function getResponseBody(): ?string;
+
+    /**
+     * @param string $responseBody
+     * @return void
+     */
+    public function setResponseBody(string $responseBody): void;
+
 }
