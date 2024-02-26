@@ -14,6 +14,10 @@ define([
                 'details-action': true
             }
         },
+        selectors: {
+            bodyBtn: '#body-btn',
+            responseBtn: '#response-btn'
+        },
         getPayload: function(row) {
             return row['payload_full'];
         },
@@ -50,6 +54,16 @@ define([
                     }
                 }]
             }).trigger('contentUpdated').trigger('openModal');
+            $(this.selectors.bodyBtn).off('click').on('click', this.copyToClipBoard);
+            $(this.selectors.responseBtn).off('click').on('click', this.copyToClipBoard);
+        },
+        copyToClipBoard: function(el) {
+            let copyText = $(el.target).next();
+            try {
+                navigator.clipboard.writeText(copyText.html());
+            } catch( error) {
+                console.error('error copying to clipboard');
+            }
         },
         getFieldHandler: function(row) {
             return this.preview.bind(this, row);

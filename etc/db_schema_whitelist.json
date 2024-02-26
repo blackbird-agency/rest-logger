@@ -5,7 +5,8 @@
             "http_method": true,
             "endpoint": true,
             "payload": true,
-            "response_code": true
+            "response_code": true,
+            "response_body": true
         },
         "constraint": {
             "PRIMARY": true

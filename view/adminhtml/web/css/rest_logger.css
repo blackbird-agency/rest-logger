@@ -7,7 +7,7 @@
 }
 .rest-details .modal-inner-wrap .modal-content dt, .rest-details .modal-inner-wrap .modal-content [data-role="title"] {
     font-weight: bold;
-    margin-top: 1.8rem;
+    margin: 1.8rem 0;
 }
 .rest-details .modal-inner-wrap .modal-content [data-collapsible="true"] {
     position: relative;
