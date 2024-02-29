@@ -1,0 +1,9 @@
+<?php
+/**
+ * @var $block Magento\Backend\Block\Widget\Button
+ * @var $escaper \Magento\Framework\Escaper
+ */
+?>
+<button class="action-default back" onclick="window.location.href = '<?php echo $escaper->escapeUrl($block->getUrl('*/*/')) ?>'">
+    Back
+</button>
