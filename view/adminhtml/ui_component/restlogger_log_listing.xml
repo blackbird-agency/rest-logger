@@ -116,5 +116,11 @@
                 <label translate="true">Created At</label>
             </settings>
         </column>
+        <actionsColumn name="actions" sortOrder="200"
+                       class="Blackbird\RestLogger\Ui\Component\Listing\Column\LogActions">
+            <settings>
+                <indexField>log_id</indexField>
+            </settings>
+        </actionsColumn>
     </columns>
 </listing>

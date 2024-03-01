@@ -28,3 +28,12 @@
     background-color: #f5f5f5;
     padding: 10px;
 }
+
+td {
+    max-width: 50vh;
+}
+pre {
+    overflow-wrap: break-word;
+    text-wrap: wrap;
+    max-width: 100%;
+}

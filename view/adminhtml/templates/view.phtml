@@ -1,0 +1,65 @@
+<?php
+/**
+ * @var $block \Blackbird\RestLogger\Block\Adminhtml\Views
+ */
+
+$log = $block->getLogDetails();
+?>
+<div>
+    <div class="header">
+        <table class="admin__table-secondary">
+            <tbody>
+                <tr>
+                    <th><?= \Blackbird\RestLogger\Api\Data\LogInterface::LOG_ID ?></th>
+                    <td><?= $log->getLogId() ?></td>
+                </tr>
+                <tr>
+                    <th><?= \Blackbird\RestLogger\Api\Data\LogInterface::HTTP_METHOD ?></th>
+                    <td><?= $log->getHttpMethod() ?></td>
+                </tr>
+                <tr>
+                    <th><?= \Blackbird\RestLogger\Api\Data\LogInterface::ENDPOINT ?></th>
+                    <td><?= $log->getEndpoint() ?></td>
+                </tr>
+                <tr>
+                    <th><?= \Blackbird\RestLogger\Api\Data\LogInterface::PAYLOAD ?></th>
+                    <td>
+                        <button id="btn_payload">Copier</button>
+                        <pre id="pre_payload"><?= $block->getFormattedJson($log->getPayload()) ?></pre>
+                    </td>
+                </tr>
+                <tr>
+                    <th><?= \Blackbird\RestLogger\Api\Data\LogInterface::RESPONSE_CODE ?></th>
+                    <td><?= $log->getResponseCode() ?></td>
+                </tr>
+                <tr>
+                    <th><?= \Blackbird\RestLogger\Api\Data\LogInterface::CREATED_AT ?></th>
+                    <td><?= $log->getCreatedAt() ?></td>
+                </tr>
+                <tr>
+                    <th><?= \Blackbird\RestLogger\Api\Data\LogInterface::RESPONSE_BODY ?></th>
+                    <td>
+                        <button id="btn_response_body">Copier</button>
+                        <pre id="pre_response_body"><?= $block->getFormattedJson($log->getResponseBody()) ?></pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    'use strict'
+    const btnPayload = document.querySelector("#btn_payload");
+    const prePayload = document.querySelector("#pre_payload");
+    const btnResponseBody = document.querySelector("#btn_response_body");
+    const preResponseBody = document.querySelector("#pre_response_body");
+
+    btnPayload.addEventListener("click", function () {
+        navigator.clipboard.writeText(prePayload.innerHTML);
+    });
+
+    btnResponseBody.addEventListener("click", function () {
+        navigator.clipboard.writeText(preResponseBody.innerHTML);
+    });
+</script>
