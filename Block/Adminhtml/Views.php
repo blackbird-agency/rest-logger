@@ -22,8 +22,7 @@ class Views extends Template
 
     public function getLogDetails(): ?LogInterface
     {
-        if($this->_request->getParam('id') === null)
-        {
+        if($this->_request->getParam('id') === null) {
             return null;
         }
         $searchCriteria = $this->searchCriteriaBuilder
@@ -35,18 +34,16 @@ class Views extends Template
         return $log ?: null;
     }
 
-    public function getFormattedJson(string $json): string
+    public function getFormattedJson(string $input): string
     {
-        $decoded = json_decode($json);
-        if ($decoded === null && json_last_error() !== JSON_ERROR_NONE) {
-            return $json;
+        try {
+            $decoded = json_decode($input, JSON_THROW_ON_ERROR);
+            if ($decoded === null) {
+                return $input;
+            }
+            return json_encode($decoded, JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR) ?: $input;
+        } catch (\Exception) {
+            return $input;
         }
-
-        $encoded = json_encode($decoded, JSON_PRETTY_PRINT);
-        if ($encoded === false) {
-            return $json;
-        }
-
-        return $encoded;
     }
 }

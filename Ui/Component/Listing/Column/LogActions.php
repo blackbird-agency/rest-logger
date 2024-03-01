@@ -50,9 +50,6 @@ class LogActions extends Column
     public function prepareDataSource(array $dataSource)
     {
         if (isset($dataSource['data']['items'])) {
-//            $logId = $this->context->getFilterParam('log_id');
-//            var_dump($dataSource['data']['items']);
-
             foreach ($dataSource['data']['items'] as &$item) {
                 $item[$this->getData('name')]['view'] = [
                     'href' => $this->urlBuilder->getUrl(

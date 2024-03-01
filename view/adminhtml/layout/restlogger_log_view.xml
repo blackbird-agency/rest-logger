@@ -5,16 +5,11 @@
         <css src="Blackbird_RestLogger::css/rest_logger.css"/>
     </head>
     <body>
-<!--        <referenceContainer name="content">-->
-<!--            <uiComponent name="restlogger_log_listing"/>-->
-<!--        </referenceContainer>-->
         <referenceBlock name="page.title">
             <action method="setTitleClass">
                 <argument name="class" xsi:type="string">complex</argument>
             </action>
-
         </referenceBlock>
-
         <referenceContainer name="page.main.actions">
             <block class="Magento\Backend\Block\Store\Switcher" name="store_switcher">
                 <action method="setUseConfirm">
